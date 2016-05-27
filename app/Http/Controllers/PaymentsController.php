@@ -22,15 +22,19 @@ class PaymentsController extends Controller
     	$data = $request->all();
 
     	if ( $this->validator( $data ) ) {
-    		$payment = Payment::create( $data );
-			if( $payment ) {
-	            return redirect('payment/index')->with('message', 'Payment created successfully');
-	        } else {
-	            return redirect()
-	                ->back()
-	                ->withInput()
-	                ->with('message', 'Error registering the payment.');
-	        }
+    		/* check for dead registers */
+    		if ( !User::isDead( $data['user_id'] ) {
+    			/* if user exist create de payment register */
+    			$payment = Payment::create( $data );
+				if( $payment ) {
+		            return redirect('payment/index')->with('message', 'Payment created successfully');
+		        } else {
+		            return redirect()
+		                ->back()
+		                ->withInput()
+		                ->with('message', 'Error registering the payment.');
+		        }
+    		}
     	}
 
     }

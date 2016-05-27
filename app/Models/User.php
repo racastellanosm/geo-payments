@@ -41,4 +41,8 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Favourite', 'user_id');
     }
 
+    public function isDead ( $id ) {
+        return User::find( $id ) ? false : true;
+    }
+
 }
