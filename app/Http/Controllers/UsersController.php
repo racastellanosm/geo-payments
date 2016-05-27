@@ -18,7 +18,7 @@ class UsersController extends Controller
     {
         return Validator::make($data, [
             'username' => 'required|max:255',
-	        'age' => 'required|numeric|size > 18',
+	        'age' => 'required|numeric|min:18',
         ]);
     }
 
@@ -69,5 +69,6 @@ class UsersController extends Controller
 		return redirect('users/index')->with('message', 'User deleted successfully');
 
 	}
+
 
 }

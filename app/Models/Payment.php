@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Validator;
 
 class Payment extends Model
 {
@@ -26,12 +27,22 @@ class Payment extends Model
 	protected $timestamps = false;
 
 
+    /**
+     * The model validation rules
+     *
+     * @var array
+     */
+    protected $rules = [
+        'price' => 'required|min:1',
+    ];
+
+
 	/**
     * Model Relations
     */
 
     //this is a NaN relation 
-	public function users () {
+	public function user () {
         return $this->belongsToMany('App\Models\User', 'users_payments', 'payment_id', 'user_id');
     }
 
