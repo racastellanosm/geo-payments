@@ -13,7 +13,7 @@ class FavoritesController extends Controller
     	$data = $request->all();
 
 		/* check for dead registers */
-		if ( !User::isDead( $data['user_id'] ) {
+		if ( !User::isDead( $data['user_id'] ) ) {
 			/* if user exist create de payment register */
 			$favorite = Favourite::create( $data );
 			if( $favorite ) {
@@ -43,5 +43,5 @@ class FavoritesController extends Controller
                 ->with('message', 'Error updating the payment.');
         }
     }
-    
+
 }

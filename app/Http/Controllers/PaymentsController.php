@@ -23,7 +23,7 @@ class PaymentsController extends Controller
 
     	if ( $this->validator( $data ) ) {
     		/* check for dead registers */
-    		if ( !User::isDead( $data['user_id'] ) {
+    		if ( !User::isDead( $data['user_id'] ) ) {
     			/* if user exist create de payment register */
     			$payment = Payment::create( $data );
 				if( $payment ) {
