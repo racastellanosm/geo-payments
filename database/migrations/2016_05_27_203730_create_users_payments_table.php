@@ -28,3 +28,4 @@ class CreateUsersPaymentsTable extends Migration
         Schema::drop('users_payments');
     }
 }
+
